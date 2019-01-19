@@ -1,0 +1,40 @@
+
+<div *ngIf="done">
+
+  <p > Total Marks {{toatalMarks}} </p>
+    <div  *ngFor="let element of receivedData;index as i" >
+     question:  {{element.question}}<br>
+     
+     correct answer:  {{element.correct_answer}}
+      <br> <br>
+      <br><br>
+    </div>
+
+</div>
+
+
+
+<button (click)="showquestions()">click here to start exam</button>
+            <div class="top" *ngIf="click" >
+               <div class="overlay" >
+
+                  question:  {{question.question}}<br>
+                
+                    <div  *ngFor="let ans of question.incorrect_answers; index as i">
+                            
+                               <input type="radio" (click)="onclick(question,i)" name="selection" >{{ans}} <br>                          
+                         <br>
+                    </div> 
+                  
+                   <br><br>
+             
+
+                <button (click)="previous()">previous</button>  &nbsp;&nbsp;&nbsp;&nbsp;  <button  (click)="next()">next</button>
+                    <br><br><br>
+                    <div *ngIf="lastquestion">
+                          <button  (click)="submitQiz()"> submit qiz</button>
+                    </div>
+               </div>
+  </div>
+
+

@@ -1,0 +1,24 @@
+var express=require("express");
+var bodyParser=require("body-parser");
+
+var route=require("./routes/route.js");
+
+var app=express();
+
+
+
+app.use(function(req,res,next){
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods","GET,PUT,POST,DELETE");
+    res.header("Access-Control-Allow-Headers","Content-Type");
+    next();
+})
+
+
+app.use(bodyParser.json({limit :'10mb'}));
+
+
+app.use("/",route);
+
+
+app.listen(3000,()=>{console.log("you are listening to port 3000")});
